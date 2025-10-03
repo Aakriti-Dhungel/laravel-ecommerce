@@ -22,7 +22,7 @@ class SeoResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Seo';
+    protected static ?string $recordTitleAttribute = 'type';
 
     public static function form(Schema $schema): Schema
     {

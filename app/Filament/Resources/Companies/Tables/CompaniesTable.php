@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -17,8 +18,13 @@ class CompaniesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('logo')
-                    ->searchable(),
+                // ImageColumn::make('logo')
+                //     ->disk('public')
+                //     ->circular()
+                //     ->width(50),
+                ImageColumn::make('logo')
+                    ->label('Logo')
+                    ->disk('public'),
                 TextColumn::make('address')
                     ->searchable(),
                 TextColumn::make('phone')

@@ -15,15 +15,38 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Attributes\Boot;
+use UnitEnum;
 
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | UnitEnum | null $navigationGroup = 'Settings';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-building-office';
+    protected static  ?string $modelLabel = 'Company';
+    protected static  ?string $pluralModelLabel = 'Company';
 
-    protected static ?string $recordTitleAttribute = 'Company';
+    // protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    // // protected static string|BackedEnum|null $navigationIcon = 'fa-align-center';
 
+
+    // protected static ?string $navigationIcon = 'fas-newspaper';
+
+
+    // protected static ?string $recordTitleAttribute = 'Company';
+        protected static ?string $recordTitleAttribute = 'name';
+
+
+    public static function canCreate() : bool{
+        $company = Company::first();
+        if(!$company){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public static function form(Schema $schema): Schema
     {
         return CompanyForm::configure($schema);

@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Shop extends Model
 {
-     public function vendor(): HasOne
+    protected $fillable = [
+        'name',
+        'logo',
+        'address',
+        'phone',
+        'map',
+        'vendor_id',
+    ];
+    public function vendor(): HasOne
     {
         return $this->hasOne(Vendor::class);
     }
