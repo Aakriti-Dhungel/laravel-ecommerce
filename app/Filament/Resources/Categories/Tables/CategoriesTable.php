@@ -19,6 +19,8 @@ class CategoriesTable
                     ->searchable(),
                 TextColumn::make('commission')
                     ->numeric()
+                    ->label('Commission Percentage')
+                    ->suffix('%')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

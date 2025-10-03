@@ -18,13 +18,10 @@ class CompaniesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                // ImageColumn::make('logo')
-                //     ->disk('public')
-                //     ->circular()
-                //     ->width(50),
                 ImageColumn::make('logo')
                     ->label('Logo')
-                    ->disk('public'),
+                    ->disk('public')
+                    ->width(50),
                 TextColumn::make('address')
                     ->searchable(),
                 TextColumn::make('phone')

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
-            $table->string('term');
-            $table->string('policy');
+            $table->longText('term');
+            $table->longText('policy');
             $table->timestamps();
         });
     }

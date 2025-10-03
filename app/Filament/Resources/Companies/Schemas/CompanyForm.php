@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Companies\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -13,13 +14,6 @@ class CompanyForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
-                FileUpload::make('logo')
-                    ->label('Company Logo')
-                    ->image() // ensures it accepts only images and shows preview
-                    ->disk('public') // store in storage/app/public
-                    ->directory('companies') // store inside companies folder
-                    ->visibility('public') // make it publicly accessible
                     ->required(),
                 TextInput::make('address')
                     ->required(),
@@ -37,9 +31,17 @@ class CompanyForm
                     ->default(null),
                 TextInput::make('youtube')
                     ->default(null),
-                TextInput::make('term')
+                RichEditor::make('term')
+                    ->columnSpanFull()
                     ->required(),
-                TextInput::make('policy')
+                RichEditor::make('policy')
+                    ->columnSpanFull()
+                    ->required(),
+                FileUpload::make('logo')
+                    ->label('Company Logo')
+                    ->image()
+                    ->disk('public') // store in storage/app/public
+                    ->directory('companies') // store inside companies folder
                     ->required(),
             ]);
     }
