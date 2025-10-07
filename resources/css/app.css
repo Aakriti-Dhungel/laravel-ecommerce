@@ -1,6 +1,5 @@
-    /* resources/css/app.css */
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    @import "flowbite/src/themes/default"; /* Import Flowbite default theme */
+@import "flowbite";
