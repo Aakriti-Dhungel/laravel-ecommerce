@@ -16,8 +16,8 @@ class Shop extends Model
         'map',
         'vendor_id',
     ];
-    public function vendor(): HasOne
+    public function vendor(): BelongsTo
     {
-        return $this->hasOne(Vendor::class);
+        return $this->belongsTo(Vendor::class);
     }
 }
