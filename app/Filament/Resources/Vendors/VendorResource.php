@@ -15,16 +15,33 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class VendorResource extends Resource
 {
     protected static ?string $model = Vendor::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    // protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+protected static string|BackedEnum|null $navigationIcon = 'heroicon-s-building-storefront';
+    protected static string | UnitEnum | null $navigationGroup = 'Vendor Management';
+    protected static ?int $navigationSort = 3;
+    protected static  ?string $modelLabel = 'Vendors';
+    protected static  ?string $pluralModelLabel = 'Vendors';
+
+
 
     // protected static ?string $recordTitleAttribute = 'Admin';
     protected static ?string $recordTitleAttribute = 'email';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', 'pending')->count();
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -53,8 +70,8 @@ class VendorResource extends Resource
         return [
             'index' => ListVendors::route('/'),
             'create' => CreateVendor::route('/create'),
-            'view' => ViewVendor::route('/{record}'),
-            'edit' => EditVendor::route('/{record}/edit'),
+            //'view' => ViewVendor::route('/{record}'),
+            //'edit' => EditVendor::route('/{record}/edit'),
         ];
     }
 }

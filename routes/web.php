@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/',[PageController::class,'home'])->name('home');
 Route::get('/',[PageController::class,'home'])->name('home');
-Route::post('/vendor_request',[PageController::class,'vendor_request'])->name('vendor_request');
+Route::post('/vendor-request', [PageController::class, 'vendor_request'])->name('vendor_request');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

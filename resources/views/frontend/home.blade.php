@@ -32,7 +32,8 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-4 md:p-5 space-y-4">
-                        <form action=" {{ route('vendor_request')}}" method="post">
+                        <form action="{{ route('vendor_request')}}" method="post">
+
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <div>

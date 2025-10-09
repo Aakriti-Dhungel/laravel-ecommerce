@@ -20,9 +20,9 @@ class VendorsTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
+                // TextColumn::make('email_verified_at')
+                //     ->dateTime()
+                //     ->sortable(),
                 TextColumn::make('status')
                     ->searchable(),
                 TextColumn::make('balance')
@@ -41,7 +41,7 @@ class VendorsTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
+                // ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([
