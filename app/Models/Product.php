@@ -15,6 +15,7 @@ class Product extends Model
         'discount',
         'description',
         'category_id',
+        'vendor_id'
     ];
     public function category(): BelongsTo
     {

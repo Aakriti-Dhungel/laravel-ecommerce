@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->integer('qty');
+            // $table->integer('qty');
             $table->double('price');
             $table->double('discount')->nullable();
             $table->longText('description');
+            $table->foreignId('vendor_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
