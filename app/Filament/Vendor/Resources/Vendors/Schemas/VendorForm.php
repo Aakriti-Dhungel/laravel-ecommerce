@@ -39,7 +39,12 @@ class VendorForm
                         Textarea::make('map')
                             ->required(),
                         FileUpload::make('logo')
-                            ->required(),
+                            ->disk('public') 
+                            ->required() 
+                            ->image() 
+                            ->helperText('Accepted formats: jpeg, png, gif'), 
+
+
                     ])
             ]);
     }

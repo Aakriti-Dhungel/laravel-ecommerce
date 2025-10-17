@@ -26,8 +26,9 @@ class PageController extends Controller
 
     public function home()
     {
-
-        return view('frontend.home');
+        $vendors = Vendor::where('status','approved')->get();
+        // return $vendors;
+        return view('frontend.home',compact('vendors'));
     }
     
     public function vendor_request(Request $request)

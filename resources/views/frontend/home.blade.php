@@ -1,4 +1,39 @@
 <x-frontend-layout>
+    <!-- Shop -->
+    <section>
+        <div class="container py-10">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl primary">Featured Shop/Store</h1>
+                    <small>The nearest shop/store to your location.</small>
+                </div>
+                <a href="" class="primary">View all<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 py-5">
+                @foreach ($vendors as $vendor)
+                <div class="rounded-lg border hover:shadow-lg duration-300 overflow-hidden">
+                    <a href="">
+                        <img class="h-[260px] w-full object-cover"
+                            src="{{ asset(Storage::url($vendor->shop->logo)) }}" alt="{{ $vendor->shop->name }}">
+            
+
+                        <div class="px-4 py-2">
+                            <h1>{{ Str::limit($vendor->shop->name, 60, '...') }} ({{ count($vendor->products) }})
+                            </h1>
+                            <small>{{ $vendor->shop->address }}</small>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop -->
+
+
+    <!-- Vendor Request  -->
     <section>
         <div class="container flex justify-center text-center py-20">
             <div>
@@ -32,7 +67,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-4 md:p-5 space-y-4">
-                        <form action="{{ route('vendor_request')}}" method="post">
+                        <form action="{{ route('vendor_request')}}" method="post" enctype="multipart/form-data">
 
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
@@ -88,6 +123,7 @@
             </div>
         </div>
     </section>
+    <!-- Vendor Request  -->
 
 
 </x-frontend-layout>
