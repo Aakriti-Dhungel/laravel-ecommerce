@@ -1,12 +1,12 @@
 <nav class="bg-primary">
    <div class="container py-2">
       <div class="flex items-center justify-between gap-2">
-         <a href="">
+         <a href="{{ route('home')}}">
             <img class="w-[70px] sm:w-[80px] md:w-[100px] lg:w-[120px]"
                src="{{ asset(Storage::url($company->logo)) }}" alt="{{ $company->name }}">
          </a>
          <div class="hidden md:block">
-            <form action="" method="get">
+            <form action="{{route('compare')}}" method="get">
                <div class="flex items-center">
                   <input type="text" name="q" id="q" placeholder="name">
                   <button class="bg-gray-200 primary font-bold h-full px-4 py-2">Compare</button>

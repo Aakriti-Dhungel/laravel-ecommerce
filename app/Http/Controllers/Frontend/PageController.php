@@ -32,6 +32,13 @@ class PageController extends Controller
         return view('frontend.home', compact('vendors', 'products'));
     }
 
+    public function compare(Request $request)
+    {
+        $q = $request->q;
+        $products = Product::where('name', 'like', "%$q%")->orderBy('price', 'asc')->get();
+        return view('frontend.compare', compact('products', 'q'));
+    }
+
     public function vendor_request(Request $request)
     {
         $request->validate([
