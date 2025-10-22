@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Shop;
 use App\Models\Vendor;
 use App\Models\Admin;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -26,11 +27,11 @@ class PageController extends Controller
 
     public function home()
     {
-        $vendors = Vendor::where('status','approved')->get();
-        // return $vendors;
-        return view('frontend.home',compact('vendors'));
+        $vendors = Vendor::where('status', 'approved')->get();
+        $products = Product::where('discount', '!=', null || 0)->limit(16)->get();
+        return view('frontend.home', compact('vendors', 'products'));
     }
-    
+
     public function vendor_request(Request $request)
     {
         $request->validate([

@@ -50,8 +50,10 @@ class ProductForm
                     ->required()
                     ->columnSpanFull(),
                 FileUpload::make('image')
+                    ->disk('public')
+                    ->required()
                     ->image()
-                    ->required(),
+                    ->helperText('Accepted formats: jpeg, png, gif'),
             ]);
     }
 }

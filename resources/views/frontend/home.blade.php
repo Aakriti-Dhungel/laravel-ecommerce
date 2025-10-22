@@ -16,8 +16,6 @@
                     <a href="">
                         <img class="h-[260px] w-full object-cover"
                             src="{{ asset(Storage::url($vendor->shop->logo)) }}" alt="{{ $vendor->shop->name }}">
-            
-
                         <div class="px-4 py-2">
                             <h1>{{ Str::limit($vendor->shop->name, 60, '...') }} ({{ count($vendor->products) }})
                             </h1>
@@ -31,6 +29,29 @@
     </section>
 
     <!-- Shop -->
+
+    <!-- Deals -->
+    <section>
+        <div class="container py-10">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1>Deals</h1>
+                    <small>Best quality deals and products</small>
+                </div>
+                <a href="" class="primary">View all<i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10 py-5">
+                @foreach ($products as $product)
+
+                <x-product-card :product="$product" />
+                
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!-- Deals -->
 
 
     <!-- Vendor Request  -->
