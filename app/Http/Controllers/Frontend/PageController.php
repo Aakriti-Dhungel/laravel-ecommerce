@@ -78,4 +78,10 @@ class PageController extends Controller
         toast('Your request has been submitted successfully!', 'success');
         return redirect()->back();
     }
+
+    public function vendor($id){
+        $vendor = Vendor::findOrFail($id);
+        $products = $vendor->products;
+        return view('frontend.vendor',compact('vendor','products'));
+    }
 }
