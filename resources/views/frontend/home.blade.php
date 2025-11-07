@@ -7,22 +7,13 @@
                     <h1 class="text-2xl primary">Featured Shop/Store</h1>
                     <small>The nearest shop/store to your location.</small>
                 </div>
-                <a href="" class="primary">View all<i class="fa-solid fa-arrow-right"></i></a>
+                <a href="{{ route('featured.stores') }}" class="primary">View all<i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 py-5">
                 @foreach ($vendors as $vendor)
-                <div class="rounded-lg border hover:shadow-lg duration-300 overflow-hidden">
-                    <a href="{{ route('vendor', $vendor->id) }}">
-                        <img class="h-[260px] w-full object-cover"
-                            src="{{ asset(Storage::url($vendor->shop->logo)) }}" alt="{{ $vendor->shop->name }}">
-                        <div class="px-4 py-2">
-                            <h1>{{ Str::limit($vendor->shop->name, 60, '...') }} ({{ count($vendor->products) }})
-                            </h1>
-                            <small>{{ $vendor->shop->address }}</small>
-                        </div>
-                    </a>
-                </div>
+
+                <x-vendor-card :vendor="$vendor" />
                 @endforeach
             </div>
         </div>
@@ -35,10 +26,10 @@
         <div class="container py-10">
             <div class="flex justify-between items-center">
                 <div>
-                    <h1>Deals</h1>
+                    <h1 class="text-2xl primary">Deals</h1>
                     <small>Best quality deals and products</small>
                 </div>
-                <a href="" class="primary">View all<i class="fa-solid fa-arrow-right"></i></a>
+                <a href="{{ route('special.deals') }}" class="primary">View all<i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
 
@@ -46,7 +37,7 @@
                 @foreach ($products as $product)
 
                 <x-product-card :product="$product" />
-                
+
                 @endforeach
             </div>
         </div>

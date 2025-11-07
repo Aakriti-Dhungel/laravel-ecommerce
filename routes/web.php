@@ -9,6 +9,9 @@ Route::get('/',[PageController::class,'home'])->name('home');
 Route::post('/vendor-request', [PageController::class, 'vendor_request'])->name('vendor_request');
 Route::get('/compare', [PageController::class, 'compare'])->name('compare');
 Route::get('/vendor/{id}', [PageController::class, 'vendor'])->name('vendor');
+Route::get('/featured-stores', [PageController::class, 'featuredStores'])->name('featured.stores');
+Route::get('/special-deals', [PageController::class, 'specialDeals'])->name('special.deals');
+
 
 
 Route::get('/dashboard', function () {

@@ -89,4 +89,22 @@ class PageController extends Controller
         }
         return view('frontend.vendor', compact('vendor', 'products'));
     }
+
+
+
+    public function featuredStores()
+    {
+        $vendors = Vendor::where('status', 'approved')->paginate(12);
+        return view('frontend.featured-stores', compact('vendors'));
+    }
+
+
+    public function specialDeals()
+    {
+        $products = Product::with('vendor.shop')
+            ->orderByDesc('discount')
+            ->paginate(12);
+
+        return view('frontend.special-deals', compact('products'));
+    }
 }
