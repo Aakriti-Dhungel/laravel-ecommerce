@@ -79,9 +79,14 @@ class PageController extends Controller
         return redirect()->back();
     }
 
-    public function vendor($id){
+    public function vendor(Request $request, $id)
+    {
         $vendor = Vendor::findOrFail($id);
         $products = $vendor->products;
-        return view('frontend.vendor',compact('vendor','products'));
+        $q = $request->q;
+        if ($q) {
+            $products = Product::where('name', 'like', "%$q%")->orderBy('price', 'asc')->get();
+        }
+        return view('frontend.vendor', compact('vendor', 'products'));
     }
 }
