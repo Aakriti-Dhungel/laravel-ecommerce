@@ -14,9 +14,21 @@
             </form>
          </div>
          <div class="flex gap-4 items-center">
+            @if(!Auth::user())
             <a href="{{ route('login') }}" class="bg-secondary primary px-3 py-1 rounded">SignIn</a>
             <a href="{{ route('register') }}"
                class="border border-[var(--secondary)] secondary px-3 py-1 rounded">SignUp</a>
+
+            @else
+            <a href="{{ route('cart')}}" class="relative mr-2">
+               <small class=" absolute -right-2 -top-2 bg-red-600 px-1 rounded text-[10px]">{{ Auth::user()->carts->count()}}</small>
+               <i class="fa-solid fa-cart-shopping text-white text-2xl"></i>
+            </a>
+            <form method="POST" action="{{ route('logout') }}">
+               @csrf
+               <button class="bg-red-600 text-white px-3 py-1 rounded">Logout</button>
+            </form>
+            @endif
          </div>
       </div>
 
@@ -31,5 +43,5 @@
    </div>
 
 
-   
+
 </nav>
